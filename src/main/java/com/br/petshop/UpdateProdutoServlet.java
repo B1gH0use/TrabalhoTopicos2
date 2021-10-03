@@ -1,6 +1,8 @@
 package com.br.petshop;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import com.br.petshop.Objs.Produto;
 
@@ -23,18 +25,28 @@ public class UpdateProdutoServlet extends HttpServlet {
 		String descricao = request.getParameter("descricao");
 		String qntidade = request.getParameter("qntidade");
 		
-		Produto produto = new Produto();
-		produto.setNome(nome);
-		produto.setPreco(preco);
-		produto.setMarca(marca);
-		produto.setDescricao(descricao);
-		produto.setQntidade(qntidade);
+		PrintWriter out = response.getWriter();
 		
-		request.getSession().setAttribute(nome, produto.getNome());
-		request.getSession().setAttribute(preco, produto.getPreco());
-		request.getSession().setAttribute(marca, produto.getMarca());
-		request.getSession().setAttribute(descricao, produto.getDescricao());
-		request.getSession().setAttribute(qntidade, produto.getQntidade());
+		
+		ArrayList<Produto> listaProdutos = (ArrayList<Produto>)request.getSession().getAttribute("listaProdutos");
+		
+		for (Produto produto : listaProdutos) {
+			if(produto.getNome().equals(nome)) {
+				produto.setNome(nome);
+				produto.setDescricao(descricao);
+				produto.setMarca(marca);
+				produto.setPreco(preco);
+				produto.setQntidade(qntidade);
+			}
+		}
+		
+		request.setAttribute("listaProdutos", listaProdutos);
+		
+		
+		out.println("<html><body>");
+		out.println("Produto " + nome + " alterado.");
+		
+		out.println("</body></html>");
 		
 	}
 }

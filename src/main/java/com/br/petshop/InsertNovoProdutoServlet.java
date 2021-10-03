@@ -1,9 +1,9 @@
 package com.br.petshop;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import com.br.petshop.Objs.Cliente;
 import com.br.petshop.Objs.Produto;
 
 import jakarta.servlet.annotation.WebServlet;
@@ -18,27 +18,39 @@ public class InsertNovoProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();	
-		ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+		HttpSession session = request.getSession();
 		
-		if(session.getAttribute("listaClientes") != null) {
+		ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
+
+		request.getSession().setAttribute("listaProdutos", listaProdutos);
+		
+		if(session.getAttribute("listaProdutos") != null) {
 			listaProdutos = (ArrayList<Produto>) session.getAttribute("listaProdutos");		
 		} 
 		
-		String nome = request.getParameter("nomeProduto");
+		String nomeProduto = request.getParameter("nomeProduto");
 		String preco = request.getParameter("preco");
 		String marca = request.getParameter("marca");
 		String descricao = request.getParameter("descricao");
 		String qntidade = request.getParameter("qntidade");
 		
 		Produto produto = new Produto();
-		produto.setNome(nome);
-		produto.setPreco(preco);
-		produto.setMarca(marca);
+		produto.setNome(nomeProduto);
 		produto.setDescricao(descricao);
+		produto.setMarca(marca);
+		produto.setPreco(preco);
 		produto.setQntidade(qntidade);
 		
+		listaProdutos.add(produto);
+		
 		request.getSession().setAttribute("listaProdutos", listaProdutos);
+		
+		PrintWriter out = response.getWriter();
+		
+		out.println("<html><body>");
+		out.println("Produto " + nomeProduto  + "adicionado com sucesso!");
+		out.println("<a href='index.html'>Voltar para a página inicial</a>");
+		out.println("</body></html>");
 		
 	}
 

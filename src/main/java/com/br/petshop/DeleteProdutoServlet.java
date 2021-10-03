@@ -2,6 +2,7 @@ package com.br.petshop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import com.br.petshop.Objs.Produto;
 
@@ -17,17 +18,20 @@ public class DeleteProdutoServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String nomeProduto = request.getParameter("nomeProduto");
 		PrintWriter out = response.getWriter();
 		
-		Produto ss = (Produto)request.getSession().getAttribute("produto");
+		ArrayList<Produto> listaProdutos = (ArrayList<Produto>)request.getSession().getAttribute("listaProdutos");
+		for (Produto produto : listaProdutos) {
+			if(produto.getNome().equals(nomeProduto)) {
+				listaProdutos.remove(produto);
+			}
+		}
+		request.setAttribute("listaClientes", listaProdutos);
+		
 
 		out.println("<html><body>");
-
-		request.getSession().removeAttribute(ss.getNome());
-		request.getSession().removeAttribute(ss.getDescricao());
-		request.getSession().removeAttribute(ss.getMarca());
-		request.getSession().removeAttribute(ss.getPreco());
-		request.getSession().removeAttribute(ss.getQntidade());
+		out.println("Cliente " + nomeProduto + " excluído.");
 		
 		out.println("</body></html>");
 	}
