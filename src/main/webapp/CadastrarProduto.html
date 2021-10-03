@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Cadastrar Cliente</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Cadastrar Produto</title>
 </head>
-<body>
-	<form action="/petshop/addNovoProduto"  method="post">
-		Nome do Produto: <input type="text" name="nomeProduto" required/>
-		Preço: <input type="text" name="preco" required/>
-		Marca: <input type="text" name="marca" required/>
-		Descrição: <input type="text" name="descricao" required/>
-		Quantidade: <input type="text" name="qntidade" required/>
-		<button type="submit">Enviar</button>
-	</form>
+<body class="container">
+	<div>
+		<h1>Cadastrar Novo Produto</h1>
+		<form action="/petshop/addNovoProduto"  method="post">
+			Nome do Produto: <input type="text" name="nomeProduto" required/>
+			PreÃ§o: <input type="text" name="preco" required/>
+			Marca: <input type="text" name="marca" required/>
+			DescriÃ§Ã£o: <input type="text" name="descricao" required/>
+			Quantidade: <input type="text" name="qntidade" required/>
+			<button type="submit">Enviar</button>
+		</form>
+	</div>
 </body>
 </html>

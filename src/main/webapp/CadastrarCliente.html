@@ -2,16 +2,22 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <title>Cadastrar Cliente</title>
 </head>
-<body>
-	<h1>Adicionar Cliente</h1>
-	<form action="/petshop/addNovoCliente"  method="post">
-		nome: <input type="text" name="nomeCliente" required/>
-		telefone: <input type="tel" name="phone" required/>
-		endereço: <input type="text" name="endereco" required/>
-		Nome Pet: <input type="text" name="nomePet" required/>
-		<button type="submit">Enviar</button>
-	</form>
+<body class="container">
+	<div>
+		<h1>Adicionar Cliente</h1>
+		<form action="/petshop/addNovoCliente"  method="post">
+			Nome: <input type="text" name="nomeCliente" required/>
+			Telefone: <input type="tel" name="phone" required/>
+			Endereço: <input type="text" name="endereco" required/>
+			Nome do Pet: <input type="text" name="nomePet" required/>
+			<button type="submit">Enviar</button>
+		</form>
+	</div>
 </body>
 </html>
