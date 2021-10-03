@@ -2,6 +2,8 @@ package com.br.petshop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.br.petshop.Objs.Cliente;
 
@@ -15,18 +17,22 @@ import jakarta.servlet.ServletException;
 public class DeleteClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String nomeCliente = request.getParameter("nomeCliente");
 		PrintWriter out = response.getWriter();
 		
-		Cliente ss = (Cliente)request.getSession().getAttribute("cliente");
+		ArrayList<Cliente> listaClientes = (ArrayList<Cliente>)request.getSession().getAttribute("listaClientes");
+		for (Cliente cliente : listaClientes) {
+			if(cliente.getNome().equals(nomeCliente)) {
+				listaClientes.remove(cliente);
+			}
+		}
+		request.setAttribute("listaClientes", listaClientes);
+		
 
 		out.println("<html><body>");
-
-		request.getSession().removeAttribute(ss.getNome());
-		request.getSession().removeAttribute(ss.getEndereco());
-		request.getSession().removeAttribute(ss.getNomePets());
-		request.getSession().removeAttribute(ss.getTelefone());
+		out.println("Cliente " + nomeCliente + " excluído.");
 		
 		out.println("</body></html>");
 	}
