@@ -28,11 +28,11 @@ public class ListarInfoServlet extends HttpServlet {
 		} 
 		
 		if(session.getAttribute("listaProdutos") != null) {
-			listaClientes = (ArrayList<Cliente>) session.getAttribute("listaProdutos");		
+			listaProdutos = (ArrayList<Produto>) session.getAttribute("listaProdutos");		
 		} 
 		
 		PrintWriter out = response.getWriter();
-		
+
 		out.println("<html><body>");
 		out.println("<h1>Lista de Clientes </h1>");
 		int countCliente = 0;

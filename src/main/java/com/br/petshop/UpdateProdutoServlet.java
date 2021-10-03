@@ -13,13 +13,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.ServletException;
 
 
-@WebServlet(name = "addNovoCliente", urlPatterns = { "/addNovoCliente" })
+@WebServlet(name = "updateProduto", urlPatterns = { "/updateProduto" })
 public class UpdateProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String nome = request.getParameter("nomeProduto");
+		String nomeProduto = request.getParameter("nomeProduto");
+		String nome = request.getParameter("nome");
 		String preco = request.getParameter("preco");
 		String marca = request.getParameter("marca");
 		String descricao = request.getParameter("descricao");
@@ -31,7 +31,7 @@ public class UpdateProdutoServlet extends HttpServlet {
 		ArrayList<Produto> listaProdutos = (ArrayList<Produto>)request.getSession().getAttribute("listaProdutos");
 		
 		for (Produto produto : listaProdutos) {
-			if(produto.getNome().equals(nome)) {
+			if(produto.getNome().equals(nomeProduto)) {
 				produto.setNome(nome);
 				produto.setDescricao(descricao);
 				produto.setMarca(marca);
@@ -42,9 +42,8 @@ public class UpdateProdutoServlet extends HttpServlet {
 		
 		request.setAttribute("listaProdutos", listaProdutos);
 		
-		
 		out.println("<html><body>");
-		out.println("Produto " + nome + " alterado.");
+		out.println("Produto " + nomeProduto + " alterado.");
 		
 		out.println("</body></html>");
 		

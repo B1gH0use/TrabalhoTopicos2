@@ -24,13 +24,7 @@ public class InsertNovoClienteServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
-		Cliente cliente1 = new Cliente();
-		cliente1.setNome("Marcelo");
-		cliente1.setEndereco("Rua");
-		cliente1.setTelefone("3433-8557");
-		cliente1.setNomePets("Teste");
-		
-		listaClientes.add(cliente1);
+
 		request.getSession().setAttribute("listaClientes", listaClientes);
 		
 		if(session.getAttribute("listaClientes") != null) {
@@ -40,7 +34,7 @@ public class InsertNovoClienteServlet extends HttpServlet {
 		String nomeCliente = request.getParameter("nomeCliente");
 		String telefone = request.getParameter("phone");
 		String endereco = request.getParameter("endereco");
-		String nomePet = request.getParameter("NomePet");
+		String nomePet = request.getParameter("nomePet");
 		
 		Cliente cliente = new Cliente();
 		cliente.setNome(nomeCliente);
@@ -55,8 +49,8 @@ public class InsertNovoClienteServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		out.println("<html><body>");
-		out.println("Cliente " + nomeCliente  + "adicionado com sucesso!");
-		out.println("<a href='index.html'>Voltar para a página inicial</a>");
+		out.println("Cliente " + nomeCliente + "/t" + nomePet + "adicionado com sucesso!");
+		out.println("<a href='index.html'>Voltar para a pagina inicial</a>");
 		out.println("</body></html>");
 	}
 }
