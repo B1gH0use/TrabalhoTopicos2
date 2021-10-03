@@ -1,32 +1,17 @@
 package com.br.petshop.Objs;
 
-import java.util.List;
-
 public class Cliente {
-	private int id;
+	
 	private String nome;
-	private List<String> pedidos;
 	private String telefone; 
-	private List<String> NomePets;
+	private String NomePets;
 	private String endereco;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	public List<String> getPedidos() {
-		return pedidos;
-	}
-	public void setPedidos(String pedido) {
-		this.pedidos.add(pedido);
 	}
 	public String getTelefone() {
 		return telefone;
@@ -34,11 +19,11 @@ public class Cliente {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public List<String> getPets() {
+	public String getNomePets() {
 		return NomePets;
 	}
-	public void setPets(String pet) {
-		this.NomePets.add(pet);
+	public void setNomePets(String nomePets) {
+		NomePets = nomePets;
 	}
 	public String getEndereco() {
 		return endereco;

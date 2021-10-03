@@ -1,20 +1,14 @@
 package com.br.petshop.Objs;
 
 public class Produto {
-	private int id;
+	
 	private String nome;
-	private float preco;
+	private String preco;
 	private String marca;
 	private String descricao;
-	private int qntidade;
+	private String qntidade;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -22,10 +16,10 @@ public class Produto {
 		this.nome = nome;
 	}
 	
-	public float getPreco() {
+	public String getPreco() {
 		return preco;
 	}
-	public void setPreco(float preco) {
+	public void setPreco(String preco) {
 		this.preco = preco;
 	}
 	
@@ -43,10 +37,10 @@ public class Produto {
 		this.descricao = descricao;
 	}
 	
-	public int getQntidade() {
+	public String getQntidade() {
 		return qntidade;
 	}
-	public void setQntidade(int qntidade) {
+	public void setQntidade(String qntidade) {
 		this.qntidade = qntidade;
 	}
 	

@@ -14,15 +14,15 @@ import jakarta.servlet.ServletException;
  * Servlet implementation class addNovoProdutoServlet
  */
 @WebServlet(name = "addNovoProduto", urlPatterns = { "/addNovoProduto" })
-public class addNovoProdutoServlet extends HttpServlet {
+public class InsertNovoProdutoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = request.getParameter("nomeProduto");
-		float preco = Float.parseFloat(request.getParameter("preco"));
+		String preco = request.getParameter("preco");
 		String marca = request.getParameter("marca");
 		String descricao = request.getParameter("descricao");
-		int qntidade = Integer.parseInt(request.getParameter("qntidade"));
+		String qntidade = request.getParameter("qntidade");
 		
 		Produto produto = new Produto();
 		produto.setNome(nome);

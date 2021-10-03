@@ -12,7 +12,7 @@ import jakarta.servlet.ServletException;
 
 
 @WebServlet(name = "addNovoCliente", urlPatterns = { "/addNovoCliente" })
-public class addNovoClienteServlet extends HttpServlet {
+public class InsertNovoClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,7 +26,7 @@ public class addNovoClienteServlet extends HttpServlet {
 		cliente.setNome(nomeCliente);
 		cliente.setEndereco(endereco);
 		cliente.setTelefone(telefone);
-		cliente.setPets(nomePet);
+		cliente.setNomePets(nomePet);
 		
 		request.getSession().setAttribute("cliente", cliente);
 		

@@ -2,7 +2,6 @@ package com.br.petshop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import com.br.petshop.Objs.Produto;
 
@@ -24,7 +23,6 @@ public class listarProdutosServlet extends HttpServlet {
 
 		out.println("<html><body>");
 
-		System.out.print(ss.getId());
 		System.out.print(ss.getNome());
 		System.out.print(ss.getDescricao());
 		System.out.print(ss.getMarca());
