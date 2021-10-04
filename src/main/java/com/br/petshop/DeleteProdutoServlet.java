@@ -27,11 +27,11 @@ public class DeleteProdutoServlet extends HttpServlet {
 				listaProdutos.remove(produto);
 			}
 		}
-		request.setAttribute("listaClientes", listaProdutos);
+		request.setAttribute("listaProdutos", listaProdutos);
 		
 
 		out.println("<html><body>");
-		out.println("Cliente " + nomeProduto + " excluído.");
+		out.println("Produto " + nomeProduto + " excluído.");
 		
 		out.println("</body></html>");
 	}
