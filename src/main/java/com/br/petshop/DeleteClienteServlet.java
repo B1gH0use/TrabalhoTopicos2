@@ -31,7 +31,12 @@ public class DeleteClienteServlet extends HttpServlet {
 		request.setAttribute("listaClientes", listaClientes);
 		
 
-		out.println("<html><body>");
+		out.println("<html>"
+				+ "<link rel=\"stylesheet\" href=\"style.css\">\r\n"
+				+ "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n"
+				+ "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n"
+				+ "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">"
+				+ "<body>");
 		out.println("Cliente " + nomeCliente + " excluído.");
 		
 		out.println("</body></html>");

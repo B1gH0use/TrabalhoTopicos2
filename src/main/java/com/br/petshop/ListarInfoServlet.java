@@ -33,33 +33,51 @@ public class ListarInfoServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 
-		out.println("<html><body>");
+		out.println("<html>");
+		out.println("<title>Petshop</title>\r\n"
+				+ "<link rel=\"stylesheet\" href=\"style.css\">\r\n"
+				+ "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n"
+				+ "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n"
+				+ "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">");
+		out.println("<body>");
 		out.println("<h1>Lista de Clientes </h1>");
+		out.println("<table>");
+		out.println("<tr><th>Nome</th><th>Nome do Pet</th><th>Endereco</th><th>Telefone</th></tr>");
 		int countCliente = 0;
+		
 		for (Cliente cliente : listaClientes) {
-			out.println(cliente.getNome());
-			out.println(cliente.getNomePets());
-			out.println(cliente.getEndereco());
-			out.println(cliente.getTelefone());
+			out.println("<tr>");
+			out.println("<td>" + cliente.getNome() + "</td>");
+			out.println("<td>" + cliente.getNomePets() + "</td>");
+			out.println("<td>" + cliente.getEndereco() + "</td>");
+			out.println("<td>" + cliente.getTelefone() + "</td>");
+			out.println("</tr>");
 			countCliente += 1;
 		}
-		out.println("Número de clientes: " + countCliente);
+		
+		out.println("</table>");
+		out.println("Numero de clientes: " + countCliente);
 		out.println("<hr>");
 		
 		out.println("<h1>Produtos</h1>");
+		out.println("<table>");
+		out.println("<tr><th>Nome</th><th>Marca</th><th>Descricao</th><th>Preco</th><th>Qtidade</th></tr>");
 		int countProduto = 0;
 		for (Produto produto : listaProdutos) {
-			out.println(produto.getNome());
-			out.println(produto.getMarca());
-			out.println(produto.getDescricao());
-			out.println(produto.getPreco());
-			out.println(produto.getQntidade());
+			out.println("<tr>");
+			out.println("<td>" + produto.getNome() + "</td>");
+			out.println("<td>" + produto.getMarca() + "</td>");
+			out.println("<td>" + produto.getDescricao() + "</td>");
+			out.println("<td>" + produto.getPreco() + "</td>");
+			out.println("<td>" + produto.getQntidade() + "</td>");
+			out.println("</tr>");
 			countProduto += 1;	
 		} 
+		out.println("</table>");
 		
 		out.println("Quantidade de produtos: " + countProduto);
 		out.println("<hr>");
-		out.println("<a href='index.html'>Voltar para página inicial</a>");
+		out.println("<a href='index.html'>Voltar para pagina inicial</a>");
 		out.println("</body></html>");
 	}
 

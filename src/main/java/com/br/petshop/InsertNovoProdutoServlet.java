@@ -21,8 +21,6 @@ public class InsertNovoProdutoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		ArrayList<Produto> listaProdutos = new ArrayList<Produto>();
-
-		request.getSession().setAttribute("listaProdutos", listaProdutos);
 		
 		if(session.getAttribute("listaProdutos") != null) {
 			listaProdutos = (ArrayList<Produto>) session.getAttribute("listaProdutos");		
@@ -47,8 +45,13 @@ public class InsertNovoProdutoServlet extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		out.println("<html><body>");
-		out.println("Produto " + nomeProduto  + "adicionado com sucesso!");
+		out.println("<html>"
+				+ "<link rel=\"stylesheet\" href=\"style.css\">\r\n"
+				+ "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n"
+				+ "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n"
+				+ "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">"
+				+ "<body>");
+		out.println("Produto " + nomeProduto  + " adicionado com sucesso!");
 		out.println("<a href='index.html'>Voltar para a página inicial</a>");
 		out.println("</body></html>");
 		

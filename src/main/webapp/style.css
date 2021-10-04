@@ -69,3 +69,7 @@ button {
 button:hover {
 	background-color: #ff9e4a;
 }
+
+table, th, td {
+  border: 1px solid black;
+}
