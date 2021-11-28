@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 
 @WebServlet(name = "addNovoProduto", urlPatterns = { "/addNovoProduto" })
@@ -43,17 +44,9 @@ public class InsertNovoProdutoServlet extends HttpServlet {
 		
 		request.getSession().setAttribute("listaProdutos", listaProdutos);
 		
-		PrintWriter out = response.getWriter();
-		
-		out.println("<html>"
-				+ "<link rel=\"stylesheet\" href=\"style.css\">\r\n"
-				+ "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n"
-				+ "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n"
-				+ "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">"
-				+ "<body>");
-		out.println("Produto " + nomeProduto  + " adicionado com sucesso!");
-		out.println("<a href='index.html'>Voltar para a página inicial</a>");
-		out.println("</body></html>");
+		RequestDispatcher rd = request.getRequestDispatcher("/novoProdutoCadastrado.jsp");
+		request.setAttribute("nomeProduto", produto.getNome());
+		rd.forward(request, response);
 		
 	}
 

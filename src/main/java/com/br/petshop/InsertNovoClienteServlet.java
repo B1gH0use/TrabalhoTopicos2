@@ -13,6 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.Session;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 
 
@@ -44,16 +45,8 @@ public class InsertNovoClienteServlet extends HttpServlet {
 		
 		request.getSession().setAttribute("listaClientes", listaClientes);
 		
-		PrintWriter out = response.getWriter();
-		
-		out.println("<html>"
-				+ "<link rel=\"stylesheet\" href=\"style.css\">\r\n"
-				+ "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n"
-				+ "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n"
-				+ "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">"
-				+ "<body>");
-		out.println("Cliente " + nomeCliente + " adicionado com sucesso!");
-		out.println("<a href='index.html'>Voltar para a pagina inicial</a>");
-		out.println("</body></html>");
+		RequestDispatcher rd = request.getRequestDispatcher("/novoClienteCadastrado.jsp");
+		request.setAttribute("nomeCliente", cliente.getNome());
+		rd.forward(request, response);
 	}
 }
