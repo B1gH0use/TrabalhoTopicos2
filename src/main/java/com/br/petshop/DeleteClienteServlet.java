@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 
 @WebServlet(name = "DeleteCliente", urlPatterns = { "/DeleteCliente" })
@@ -26,20 +27,15 @@ public class DeleteClienteServlet extends HttpServlet {
 		for (Cliente cliente : listaClientes) {
 			if(cliente.getNome().equals(nomeCliente)) {
 				listaClientes.remove(cliente);
+				break;
 			}
 		}
 		request.setAttribute("listaClientes", listaClientes);
 		
-
-		out.println("<html>"
-				+ "<link rel=\"stylesheet\" href=\"style.css\">\r\n"
-				+ "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n"
-				+ "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n"
-				+ "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap\" rel=\"stylesheet\">"
-				+ "<body>");
-		out.println("Cliente " + nomeCliente + " excluído.");
 		
-		out.println("</body></html>");
+		RequestDispatcher rd = request.getRequestDispatcher("/clienteDeletado.jsp");
+		request.setAttribute("nomeCliente", nomeCliente);
+		rd.forward(request, response);
 	}
 
 }

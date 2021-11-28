@@ -1,7 +1,3 @@
-<%
-	String nomeEmpresa = "Alura";
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +10,7 @@
 </head>
 <body>
 	<h1 class="title">Petshop</h1>
-	<h3><%=nomeEmpresa %></h3>
+
 	<nav class="navContainer">
 		<a href="CadastrarCliente.html">Adicionar Novo Cliente</a>
 		<a href="DeletarCliente.html">Deletar Cliente</a>

@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 
 
@@ -42,10 +43,10 @@ public class UpdateProdutoServlet extends HttpServlet {
 		
 		request.setAttribute("listaProdutos", listaProdutos);
 		
-		out.println("<html><body>");
-		out.println("Produto " + nomeProduto + " alterado.");
 		
-		out.println("</body></html>");
+		RequestDispatcher rd = request.getRequestDispatcher("/produtoAlterado.jsp");
+		request.setAttribute("nomeCliente", nomeProduto);
+		rd.forward(request, response);
 		
 	}
 }

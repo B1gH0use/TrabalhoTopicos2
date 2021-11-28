@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 
 
@@ -25,8 +26,6 @@ public class UpdateClienteServlet extends HttpServlet {
 		String endereco = request.getParameter("endereco");
 		String nomePet = request.getParameter("nomePet");
 		
-		PrintWriter out = response.getWriter();
-		
 		ArrayList<Cliente> listaClientes = (ArrayList<Cliente>)request.getSession().getAttribute("listaClientes");
 		for (Cliente cliente : listaClientes) {
 			if(cliente.getNome().equals(nomeCliente)) {
@@ -38,10 +37,8 @@ public class UpdateClienteServlet extends HttpServlet {
 		}
 		request.setAttribute("listaClientes", listaClientes);
 		
-
-		out.println("<html><body>");
-		out.println("Cliente " + nomeCliente + " alterado.");
-		
-		out.println("</body></html>");
+		RequestDispatcher rd = request.getRequestDispatcher("/clienteAlterado.jsp");
+		request.setAttribute("nomeCliente", nomeCliente);
+		rd.forward(request, response);
 	}
 }
