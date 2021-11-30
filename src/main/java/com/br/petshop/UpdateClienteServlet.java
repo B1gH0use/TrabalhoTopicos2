@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import com.br.petshop.Objs.Cliente;
+import com.br.petshop.Database.Model.modelCliente;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -26,12 +26,11 @@ public class UpdateClienteServlet extends HttpServlet {
 		String endereco = request.getParameter("endereco");
 		String nomePet = request.getParameter("nomePet");
 		
-		ArrayList<Cliente> listaClientes = (ArrayList<Cliente>)request.getSession().getAttribute("listaClientes");
-		for (Cliente cliente : listaClientes) {
+		ArrayList<modelCliente> listaClientes = (ArrayList<modelCliente>)request.getSession().getAttribute("listaClientes");
+		for (modelCliente cliente : listaClientes) {
 			if(cliente.getNome().equals(nomeCliente)) {
 				cliente.setNome(nome);
 				cliente.setTelefone(telefone);
-				cliente.setEndereco(endereco);
 				cliente.setNomePets(nomePet);
 			}
 		}

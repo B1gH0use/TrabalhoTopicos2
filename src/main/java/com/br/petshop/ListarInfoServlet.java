@@ -3,10 +3,11 @@ package com.br.petshop;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.br.petshop.Database.Singleton;
+import com.br.petshop.Database.connectionFactory;
 import com.br.petshop.Database.DAO.DAOclient;
 import com.br.petshop.Database.Model.modelCliente;
 import com.br.petshop.Database.Model.modelProduto;
@@ -27,12 +28,21 @@ public class ListarInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		conn = (Connection) Singleton.getIntancia();
+		try {
+			conn = connectionFactory.getConnection("localhost", 3306, "petshop", "root", "root");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ArrayList<modelCliente> listaClientes = new ArrayList<modelCliente>();
 		ArrayList<modelProduto> listaProdutos = new ArrayList<modelProduto>();
 		
-		obj = dao.Select(conn);	
+		try {
+			obj = dao.Select(conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
 		
 		for(Object ob : obj) {
 			modelCliente cliente = (modelCliente) ob;

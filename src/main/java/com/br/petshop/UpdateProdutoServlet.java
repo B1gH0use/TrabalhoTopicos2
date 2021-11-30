@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import com.br.petshop.Objs.Produto;
+import com.br.petshop.Database.Model.modelProduto;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -29,9 +29,9 @@ public class UpdateProdutoServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		
-		ArrayList<Produto> listaProdutos = (ArrayList<Produto>)request.getSession().getAttribute("listaProdutos");
+		ArrayList<modelProduto> listaProdutos = (ArrayList<modelProduto>)request.getSession().getAttribute("listaProdutos");
 		
-		for (Produto produto : listaProdutos) {
+		for (modelProduto produto : listaProdutos) {
 			if(produto.getNome().equals(nomeProduto)) {
 				produto.setNome(nome);
 				produto.setDescricao(descricao);

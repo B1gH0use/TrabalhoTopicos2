@@ -3,9 +3,10 @@ package com.br.petshop;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.br.petshop.Database.Singleton;
+import com.br.petshop.Database.connectionFactory;
 import com.br.petshop.Database.DAO.DAOclient;
 import com.br.petshop.Database.DAO.DAOproduto;
 import com.br.petshop.Database.Model.modelCliente;
@@ -21,12 +22,17 @@ import jakarta.servlet.ServletException;
 
 @WebServlet(name = "addNovoProduto", urlPatterns = { "/addNovoProduto" })
 public class InsertNovoProdutoServlet extends HttpServlet {
-	private Connection conn;
+	private static Connection conn;
 	private static final long serialVersionUID = 1L;	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		conn = (Connection) Singleton.getIntancia();
+		try {
+			conn = connectionFactory.getConnection("localhost", 3306, "petshop", "root", "root");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		HttpSession session = request.getSession();
 		
@@ -43,8 +49,14 @@ public class InsertNovoProdutoServlet extends HttpServlet {
 		modelProduto.setPreco(preco);
 		modelProduto.setQntidade(qntidade);
 		
-		DAOproduto dao = new DAOproduto(conn);
-		dao.Insert(modelProduto);
+		DAOproduto dao;
+		try {
+			dao = new DAOproduto(conn);
+			dao.Insert(modelProduto);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/novoProdutoCadastrado.jsp");
 		
