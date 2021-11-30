@@ -46,7 +46,7 @@ public class DAOclient extends AbstractDAO{
 			
 			modelCliente client = new modelCliente();
 			
-			client.setId(result.getInt("idcliente"));
+			client.setId(result.getString("idcliente"));
 			client.setNome(result.getString("nome"));
 			client.setTelefone(result.getString("telefone"));
 			client.setNomePets(result.getString("nome_pet"));

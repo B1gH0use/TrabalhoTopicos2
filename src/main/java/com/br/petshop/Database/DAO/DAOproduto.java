@@ -46,7 +46,7 @@ public class DAOproduto extends AbstractDAO{
 			
 			modelProduto produto = new modelProduto();
 			
-			produto.setId(result.getInt("idproduto"));
+			produto.setId(result.getString("idproduto"));
 			produto.setNome(result.getString("nome"));
 			produto.setPreco(result.getString("preco"));
 			produto.setMarca(result.getString("marca"));
