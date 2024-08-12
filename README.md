@@ -1,6 +1,6 @@
 # Product Management System
 
-This project is a product management system developed in Java with a frontend interface created using HTML and CSS. It allows users to perform CRUD (Create, Read, Update, Delete) operations on products and clients, with data stored in a MySQL database.
+This project is a product management system developed in Java with a frontend interface created using HTML and CSS for a university assignment at UNESC. It allows users to perform CRUD (Create, Read, Update, Delete) operations on products and clients, with data stored in a MySQL database.
 
 ## Features
 
